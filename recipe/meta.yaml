@@ -1,5 +1,4 @@
-{% set version = '2.0-2' %}
-
+{% set version = '2.0-3' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,24 +9,26 @@ package:
 source:
   fn: wmtsa_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/wmtsa_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/wmtsa/wmtsa_{{ version }}.tar.gz
-  sha256: 6ffd74f19fdaeb3fc812c1f367ac9acc4592f2b603be6e511b527fe5a9cff693
+    - {{ cran_mirror }}/src/contrib/wmtsa_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/wmtsa/wmtsa_{{ version }}.tar.gz
+  sha256: 4632cc20e189a7b99e31f8b1ff51aca927989332caeba38e222edcf2f33483e0
 
 build:
+  merge_build_host: True  # [win]
   number: 0
+  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
-  skip: True  # [win32]
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-mass
     - r-ifultools >=2.0_0
     - r-splus2r >=1.2_0
-
   run:
     - r-base
     - r-mass
@@ -36,7 +37,7 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('wmtsa')"  # [not win]
+    - $R -e "library('wmtsa')"           # [not win]
     - "\"%R%\" -e \"library('wmtsa')\""  # [win]
 
 about:
@@ -50,8 +51,9 @@ about:
 
 extra:
   recipe-maintainers:
-    - cbrueffer
     - johanneskoester
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer
+    - dbast
