@@ -14,9 +14,9 @@ source:
   sha256: 4632cc20e189a7b99e31f8b1ff51aca927989332caeba38e222edcf2f33483e0
 
 build:
+  noarch: generic
   merge_build_host: True  # [win]
-  number: 0
-  skip: true  # [win32]
+  number: 1000
   rpaths:
     - lib/R/lib/
     - lib/
@@ -46,8 +46,7 @@ about:
   summary: Software to book Wavelet Methods for Time Series Analysis, Donald B. Percival and
     Andrew T. Walden, Cambridge University Press, 2000.
   license_family: GPL2
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-2'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
