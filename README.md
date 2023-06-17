@@ -1,11 +1,11 @@
-About r-wmtsa
-=============
+About r-wmtsa-feedstock
+=======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-wmtsa-feedstock/blob/main/LICENSE.txt)
 
 Home: https://CRAN.R-project.org/package=wmtsa
 
 Package license: GPL-2
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-wmtsa-feedstock/blob/main/LICENSE.txt)
 
 Summary: Software to book Wavelet Methods for Time Series Analysis, Donald B. Percival and Andrew T. Walden, Cambridge University Press, 2000.
 
